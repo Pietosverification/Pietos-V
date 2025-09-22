@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pietos Solutions - Document Verification Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><img src="https://pietos.com/wp-content/uploads/2020/08/Untitled-design-3-140x41.png" alt="Pietos Solutions Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a onclick="showMainContent()">Home</a></li>
+                <li><a onclick="showMainContent()">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a onclick="showDashboard()">Dashboard</a></li>
+            </ul>
+            
+            <div class="auth-buttons" id="authButtons">
+                <button class="login-btn" onclick="openAuthModal('login')">Login</button>
+                <button class="register-btn" onclick="openAuthModal('register')">Register</button>
+            </div>
+            
+            <div class="user-info" id="userInfo">
+                <span>Welcome, <strong id="userName">User</strong>!</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div id="mainPageContent">
+            <section class="hero-section" id="home">
+                <h1 class="hero-title"><div id="t"></div><span class="cursor"></span></h1>
+                <p class="hero-subtitle">Your Trusted Partner for Secure Document Verification</p>
+            </section>
+
+            <section class="services-grid" id="services">
+                <div class="service-card" data-service="aadhaar">
+                    <div class="service-icon">🆔</div>
+                    <h3 class="service-title">Aadhaar Verification</h3>
+                    <p class="service-description">Instant and secure Aadhaar card verification with real-time authentication through UIDAI database.</p>
+                    <a href="file:///C:/Users/Windows%2010/Desktop/New-Code-updated%20date%20-%2017-09-2025/aadhaar.html" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'Aadhaar', false)">Verify Now</a>
+                </div>
+
+                <div class="service-card" data-service="pan">
+                    <div class="service-icon">📄</div>
+                    <h3 class="service-title">PAN Verification</h3>
+                    <p class="service-description">Quick PAN card verification with Income Tax Department integration for authentic results.</p>
+                    <a href="file:///C:/Users/Windows%2010/Desktop/New-Code-updated%20date%20-%2017-09-2025/Pan.html" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'PAN', false)">Verify Now</a>
+                </div>
+
+                <div class="service-card" data-service="dl">
+                    <div class="service-icon">🚗</div>
+                    <h3 class="service-title">Driving License Check</h3>
+                    <p class="service-description">Complete driving license verification with RTO database connectivity and status updates.</p>
+                    <a href="https://pietos.com/" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'Driving License', false)">Verify Now</a>
+                </div>
+
+                <div class="service-card" data-service="uan">
+                    <div class="service-icon">👤</div>
+                    <h3 class="service-title">UAN Verification</h3>
+                    <p class="service-description">Employee Provident Fund UAN verification with EPFO database integration.</p>
+                    <a href="https://pietos.com/" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'UAN', false)">Verify Now</a>
+                </div>
+
+                <div class="service-card" data-service="court">
+                    <div class="service-icon">⚖️</div>
+                    <h3 class="service-title">Court Records Check</h3>
+                    <p class="service-description">Comprehensive court records verification and background check services.</p>
+                    <a href="https://pietos.com/" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'Court Records', false)">Verify Now</a>
+                </div>
+
+                <div class="service-card" data-service="bank">
+                    <div class="service-icon">🏦</div>
+                    <h3 class="service-title">Bank Account Verify</h3>
+                    <p class="service-description">Secure bank account verification with IFSC validation and account holder authentication.</p>
+                    <a href="https://pietos.com/" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'Bank Account', false)">Verify Now</a>
+                </div>
+                
+                <div class="service-card" data-service="gst-basic">
+                    <div class="service-icon">🧾</div>
+                    <h3 class="service-title">Basic GST Verification</h3>
+                    <p class="service-description">Verify GSTIN to get basic details like legal name and registration status without login.</p>
+                    <a href="https://pietos.com/" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'Basic GST', true)">Verify Now</a>
+                </div>
+
+                <div class="service-card" data-service="gst-advance">
+                    <div class="service-icon">📊</div>
+                    <h3 class="service-title">Advanced GST Verification</h3>
+                    <p class="service-description">Comprehensive GST verification including details on filing history and business structure.</p>
+                    <a href="https://pietos.com/" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'Advanced GST', false)">Verify Now</a>
+                </div>
+
+                <div class="service-card" data-service="passport">
+                    <div class="service-icon">✈️</div>
+                    <h3 class="service-title">Passport Verification</h3>
+                    <p class="service-description">Verify passport details against official government databases for authenticity.</p>
+                    <a href="https://pietos.com/" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'Passport', false)">Verify Now</a>
+                </div>
+
+                <div class="service-card" data-service="voter-id">
+                    <div class="service-icon">🗳️</div>
+                    <h3 class="service-title">Voter ID Verification</h3>
+                    <p class="service-description">Check voter ID information and electoral roll details for validity.</p>
+                    <a href="https://pietos.com/" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'Voter ID', true)">Verify Now</a>
+                </div>
+
+                <div class="service-card" data-service="fast-tag">
+                    <div class="service-icon">🛣️</div>
+                    <h3 class="service-title">Fast Tag Verification</h3>
+                    <p class="service-description">Verify a vehicle's Fast Tag status and linked details for toll management.</p>
+                    <a href="https://pietos.com/" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'Fast Tag', false)">Verify Now</a>
+                </div>
+
+                <div class="service-card" data-service="pan-msme">
+                    <div class="service-icon">🏢</div>
+                    <h3 class="service-title">PAN to MSME</h3>
+                    <p class="service-description">Check if a PAN number is registered with the MSME database.</p>
+                    <a href="https://pietos.com/" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'PAN to MSME', false)">Verify Now</a>
+                </div>
+
+                <div class="service-card" data-service="mobile-msme">
+                    <div class="service-icon">📱</div>
+                    <h3 class="service-title">Mobile to MSME</h3>
+                    <p class="service-description">Find MSME registration details linked to a mobile number.</p>
+                    <a href="https://pietos.com/" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'Mobile to MSME', false)">Verify Now</a>
+                </div>
+
+                <div class="service-card" data-service="rc-vehicle">
+                    <div class="service-icon">🏍️</div>
+                    <h3 class="service-title">RC to Find Vehicle Details</h3>
+                    <p class="service-description">Get vehicle details and ownership information using the Registration Certificate (RC) number.</p>
+                    <a href="https://pietos.com/" class="verify-btn" target="_blank" onclick="handleVerificationClick(event, 'RC to Vehicle', false)">Verify Now</a>
+                </div>
+            </section>
+        </div>
+
+        <div id="dashboardPageContent" class="hidden"></div>
+    </main>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('authModal')">&times;</span>
+            <h2 id="authModalTitle">Login / Register</h2>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab" onclick="switchAuthTab('login')">Login</button>
+                <button class="auth-tab" id="registerTab" onclick="switchAuthTab('register')">Register</button>
+            </div>
+            
+            <form class="modal-form" id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+            
+            <form class="modal-form hidden" id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="registerName" placeholder="Enter full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="registerEmail" placeholder="Enter email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="registerPhone" placeholder="Enter phone number" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="registerPassword" placeholder="Create password (min. 6 characters)" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+                </div>
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+            <div id="authMessage"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content" id="about">
+            <div class="footer-section">
+                <h3>Pietos Solutions Pvt. Ltd.</h3>
+                <p>Leading provider of secure document verification services. We ensure authenticity and reliability in every verification process.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <p><a onclick="showMainContent()">Aadhaar Verification</a></p>
+                <p><a onclick="showMainContent()">PAN Verification</a></p>
+                <p><a onclick="showMainContent()">Driving License Check</a></p>
+                <p><a onclick="showMainContent()">UAN Verification</a></p>
+                <p><a onclick="showMainContent()">Court Records</a></p>
+            </div>
+            <div class="footer-section" id="contact">
+                <h3>Contact Info</h3>
+                <p>📧 contact@pietos.com</p>
+                <p>📞 +91 11 49074103, +91 1149074103</p>
+                <p>🏢 166 A, 1st Floor, Pratap Nagar, Mayur Vihar Phase I Delhi 110091</p>
+                <p>🌐 www.pietos.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Pietos Solutions Pvt. Ltd.. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
